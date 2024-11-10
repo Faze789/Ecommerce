@@ -1,0 +1,1 @@
+mongodb+srv://khad1234:khad1234@cluster0.hekpe.mongodb.net/first?retryWrites=true&w=majority
