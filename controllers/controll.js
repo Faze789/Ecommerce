@@ -12,7 +12,7 @@ var user_id ;
 module.exports = {
     home_page: (req, res) => {
         res.send('Home page !!!');
-        console.log("Home page accessed");
+        return console.log("Home page accessed");
     },
    
     get_all_users: async (req, res) => {
