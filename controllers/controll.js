@@ -4,7 +4,7 @@ const path = require('path');
 const { ObjectId } = require('mongodb'); 
 const jwt = require('jsonwebtoken');
 
-const secret_key = 'khadijaam';
+const secret_key = 'fas';
 
 var user_id ;
 
