@@ -14,6 +14,10 @@ module.exports = {
         res.send('Home page !!!');
         return console.log("Home page accessed");
     },
+    damn: (req, res) => {
+        res.send('i got damned !!!');
+        return console.log("Home page accessed");
+    },
    
     get_all_users: async (req, res) => {
         try {
