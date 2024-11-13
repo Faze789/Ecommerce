@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 router.get('/home', auth.home_page);
-router.get('/damn', auth.home_page);
+router.get('/damn', auth.damn);
 router.get('/home/get_all_users', auth.get_all_users);
 router.post('/home/get_specific', auth.get_specific_user);
 router.post('/home/signup_post_request', auth.signup_post);
