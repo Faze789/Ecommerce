@@ -27,6 +27,7 @@ router.post('/home/check_exists/new/seller_post/new_post', auth.add_new_post_in_
 
 router.put('/home/sellers/seller_post_edit', auth.seller_change_fields_data);
 
+router.delete('/home/seller/delete_unique_id_data' , auth.delete_specific_document);
 // router.get('/home/show_posts_to_buyer', auth.show_posts_to_buyer);
 
 
@@ -36,7 +37,7 @@ router.put('/home/sellers/seller_post_edit', auth.seller_change_fields_data);
 //// buyer manipulation started
 
 router.get('/buyer_home' , buyer_auth.buyer_home);
-router.delete('/home/seller/delete_unique_id_data' , buyer_auth.delete_specific_document);
+
 
 
 router.get('/home/buyer/get_all_sellers_data' , buyer_auth.get_all_sellers_data),
