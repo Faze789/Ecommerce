@@ -35,7 +35,7 @@ router.put('/home/sellers/seller_post_edit', auth.seller_change_fields_data);
 
 //// buyer manipulation started
 
-router.delete('/buyer_home' , buyer_auth.buyer_home);
+router.get('/buyer_home' , buyer_auth.buyer_home);
 router.delete('/home/seller/delete_unique_id_data' , buyer_auth.delete_specific_document);
 
 
