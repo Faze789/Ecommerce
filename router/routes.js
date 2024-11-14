@@ -1,5 +1,6 @@
 const express = require('express');
 const auth = require('../controllers/controll');
+const buyer_auth = require('../controllers/buyer_controll');
 
 
 const router = express.Router();
@@ -28,13 +29,19 @@ router.put('/home/sellers/seller_post_edit', auth.seller_change_fields_data);
 
 // router.get('/home/show_posts_to_buyer', auth.show_posts_to_buyer);
 
+
+
+
+
 //// buyer manipulation started
-router.delete('/home/seller/delete_unique_id_data' , auth.delete_specific_document);
+
+router.delete('/buyer_home' , buyer_auth.buyer_home);
+router.delete('/home/seller/delete_unique_id_data' , buyer_auth.delete_specific_document);
 
 
-router.get('/home/buyer/get_all_sellers_data' , auth.get_all_sellers_data),
-router.post('/home/buyer/buyer_sign_in' , auth.buyer_sign_in);
-router.post('/home/buyer/add_new_buyer' , auth.add_user_in_buyer_collection);
-router.post('/home/buyer/get_filtered_data' , auth.get_filtered_data);
+router.get('/home/buyer/get_all_sellers_data' , buyer_auth.get_all_sellers_data),
+router.post('/home/buyer/buyer_sign_in' , buyer_auth.buyer_sign_in);
+router.post('/home/buyer/add_new_buyer' , buyer_auth.add_user_in_buyer_collection);
+router.post('/home/buyer/get_filtered_data' , buyer_auth.get_filtered_data);
 
 module.exports = router;
