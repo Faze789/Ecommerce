@@ -1,6 +1,7 @@
 const express = require('express');
 const auth = require('../controllers/controll');
 const buyer_auth = require('../controllers/buyer_controll');
+const add_to_cart = require('../controllers/add_to_cart');
 
 
 const router = express.Router();
@@ -45,5 +46,10 @@ router.get('/home/buyer/get_all_sellers_data' , buyer_auth.get_all_sellers_data)
 router.post('/home/buyer/buyer_sign_in' , buyer_auth.buyer_sign_in);
 router.post('/home/buyer/add_new_buyer' , buyer_auth.add_user_in_buyer_collection);
 router.post('/home/buyer/get_filtered_data' , buyer_auth.get_filtered_data);
+
+
+/// buyer_add_to_cart
+
+router.post('/buyer/add_to_cart' ,add_to_cart.add_to_cart_data);
 
 module.exports = router;
