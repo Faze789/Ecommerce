@@ -25,7 +25,7 @@ module.exports = {
             const user = await Users_import.add_to_cart(buyer_unique_id , product_name , seller_name ,product_price ,warranty ,product_image)
             if(user)
             {
-                return res.status(200).json({ user });
+                return res.status(200).json({ message: "u added the product"});
             }
             else {
                 
