@@ -18,6 +18,10 @@ module.exports = {
         res.send('i got damned !!!');
         return console.log("Home page accessed");
     },
+    qatar: (req, res) => {
+        res.send('i got damned !!!');
+        return console.log("Welcome to Qatar");
+    },
    
     get_all_users: async (req, res) => {
         try {
