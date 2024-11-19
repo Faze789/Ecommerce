@@ -23,19 +23,22 @@ module.exports = {
         console.log('Product Image:', product_image);
     
         try {
-            // Debug if all required fields are present
+            
             if (!buyer_unique_id || !product_name || !seller_name || !product_price || !warranty || !product_image) {
                 console.error('Missing required fields in request body.');
                 return res.status(400).json({ message: "Missing required fields" });
             }
     
-            const user = await Users_import.add_to_cart(
+            const user = await Users_import.add_to_cart.create(
+
+                {
                 buyer_unique_id, 
                 product_name, 
                 seller_name, 
                 product_price, 
                 warranty, 
                 product_image
+                }
             );
     
             if (user) {
