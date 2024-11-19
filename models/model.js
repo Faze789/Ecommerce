@@ -51,11 +51,7 @@ const buyer_collection = mongoose.model('buyer_posts' , buyer_schema)
 
 const add_to_cart_to_to_buyer = new mongoose.Schema(
     {
-      // This can hold any field with any name, value can be of any type
-      data: {
-        type: mongoose.Schema.Types.Mixed, 
-        required: true,
-      },
+      
     },
     { strict: false } // This allows fields not defined in the schema
   );
