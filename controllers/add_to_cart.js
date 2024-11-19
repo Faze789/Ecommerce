@@ -12,35 +12,23 @@ const { ObjectId } = require('mongodb');
 module.exports = {
 
     add_to_cart_data: async (req, res) => {
-        console.log('--- Incoming Request ---');
-        console.log('Request Body:', req.body);
+        const { buyer_unique_id, product_name, seller_name, product_price, warranty, product_image } = req.body;
     
-        const { 
-            buyer_unique_id, 
-            product_name, 
-            seller_name, 
-            product_price, 
-            warranty, 
-            product_image 
-        } = req.body;
-    
-        // Log extracted fields to ensure they are being parsed correctly
-        console.log('Parsed Fields:');
-        console.log('Buyer Unique ID:', buyer_unique_id || 'Undefined');
-        console.log('Product Name:', product_name || 'Undefined');
-        console.log('Seller Name:', seller_name || 'Undefined');
-        console.log('Product Price:', product_price || 'Undefined');
-        console.log('Warranty:', warranty || 'Undefined');
-        console.log('Product Image:', product_image || 'Undefined');
-    
-        // Check if any required field is missing
-        if (!buyer_unique_id || !product_name || !seller_name || !product_price || !warranty || !product_image) {
-            console.log('Validation Failed: Missing required fields');
-            return res.status(400).json({ message: "Missing required fields" });
-        }
+        console.log('--- Incoming Request Data ---');
+        console.log('Buyer Unique ID:', buyer_unique_id);
+        console.log('Product Name:', product_name);
+        console.log('Seller Name:', seller_name);
+        console.log('Product Price:', product_price);
+        console.log('Warranty:', warranty);
+        console.log('Product Image:', product_image);
     
         try {
-            console.log('Attempting to add data to MongoDB...');
+            // Debug if all required fields are present
+            if (!buyer_unique_id || !product_name || !seller_name || !product_price || !warranty || !product_image) {
+                console.error('Missing required fields in request body.');
+                return res.status(400).json({ message: "Missing required fields" });
+            }
+    
             const user = await Users_import.add_to_cart(
                 buyer_unique_id, 
                 product_name, 
@@ -51,16 +39,15 @@ module.exports = {
             );
     
             if (user) {
-                console.log('Data successfully added to MongoDB:', user);
-                return res.status(200).json({ message: "You added the product" });
+                return res.status(200).json({ message: "Product added to cart" });
             } else {
-                console.log('Data insertion failed: add_to_cart returned false or null');
+                console.error('Database operation failed: Could not add product.');
                 return res.status(400).json({ message: "Data could not be added" });
             }
         } catch (error) {
-            // Log the error with a stack trace
-            console.error('Error in add_to_cart_data:', error.stack || error);
-            return res.status(500).json({ message: "Internal server error" });
+            console.error('Error in add_to_cart_data:', error.message);
+            console.error('Stack Trace:', error.stack);
+            return res.status(500).json({ message: "Internal server error", error: error.message });
         }
     }
     
