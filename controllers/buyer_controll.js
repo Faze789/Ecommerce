@@ -42,7 +42,7 @@ module.exports = {
 
         if(add_data_in_buyer_collection)
         {
-            return res.status(200).json({message : 'Login credentials of buyer exists'})
+            return res.status(200).json(add_data_in_buyer_collection);
         }
         
         else {

@@ -23,6 +23,7 @@ module.exports = {
         return console.log("Welcome to Qatar");
     },
    
+   
     get_all_users: async (req, res) => {
         try {
             const all_users = await Users_import.User.find();
@@ -37,6 +38,7 @@ module.exports = {
             res.status(500).json({ message: "Server error while fetching users", error: error.message });
         }
     },
+   
     
     get_specific_user: async (req, res) => {
         const { email, password } = req.body;
@@ -267,7 +269,7 @@ module.exports = {
     // buyer manipulation
     get_all_sellers_data : async (req , res) => {
         
-
+                        
         try {
             const get_all_users = await Users_import.seller_post.find();
             if(get_all_users)
