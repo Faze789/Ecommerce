@@ -19,7 +19,7 @@ module.exports = {
         return console.log("Home page accessed");
     },
     qatar: (req, res) => {
-        res.send('i got damned !!!');
+        res.send("Welcome to Qatar123");
         return console.log("Welcome to Qatar");
     },
    
