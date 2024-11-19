@@ -33,8 +33,10 @@ module.exports = {
 
             }
         } catch (error) {
-            
+            console.error('Error in add_to_cart_data:', error);
+            return res.status(500).json({ message: "Internal server error" });
         }
+        
        
 
 
