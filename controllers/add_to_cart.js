@@ -58,7 +58,7 @@ module.exports = {
         
         try {
             const find_unique_id_in_add_to_cart = await Users_import.add_to_cart.findOne({
-                buyer_unique_id_
+               buyer_unique_id: buyer_unique_id_
             })
 
             if(find_unique_id_in_add_to_cart)
