@@ -53,12 +53,12 @@ module.exports = {
 
     find_unique_id_in_add_to_cart_collection : async ( req , res)=>
     {
-        const {buyer_unique_id} = req.body;
+        const {buyer_unique_id_} = req.body;
 
         
         try {
-            const find_unique_id_in_add_to_cart = await Users_import.findOne({
-                buyer_unique_id
+            const find_unique_id_in_add_to_cart = await Users_import.add_to_cart.findOne({
+                buyer_unique_id_
             })
 
             if(find_unique_id_in_add_to_cart)
