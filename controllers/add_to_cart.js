@@ -24,10 +24,7 @@ module.exports = {
     
         try {
             
-            if (!buyer_unique_id || !product_name || !seller_name || !product_price || !warranty || !product_image) {
-                console.error('Missing required fields in request body.');
-                return res.status(400).json({ message: "Missing required fields" });
-            }
+         
     
             const user = await Users_import.add_to_cart.create(
 
@@ -51,6 +48,29 @@ module.exports = {
             console.error('Error in add_to_cart_data:', error.message);
             console.error('Stack Trace:', error.stack);
             return res.status(500).json({ message: "Internal server error", error: error.message });
+        }
+    } ,
+
+    find_unique_id_in_add_to_cart_collection : async ( req , res)=>
+    {
+        const {buyer_unique_id} = req.body;
+
+        
+        try {
+            const find_unique_id_in_add_to_cart = await Users_import.findOne({
+                buyer_unique_id
+            })
+
+            if(find_unique_id_in_add_to_cart)
+            {
+                res.status(200).json({ message: "Unique ID found in add_to_cart"})
+            }
+            else {
+                res.status(404).json({ message: "Unique ID couldnot be found in add_to_cart"});
+            }
+            
+        } catch (error) {
+            
         }
     }
     
