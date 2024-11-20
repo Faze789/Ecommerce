@@ -51,6 +51,6 @@ router.post('/home/buyer/get_filtered_data' , buyer_auth.get_filtered_data);
 /// buyer_add_to_cart
 
 router.post('/buyer/add_to_cart' ,add_to_cart.add_to_cart_data);
-router.get('/buyer/get_data_from_add_to_cart_by_unique_id' , add_to_cart.find_unique_id_in_add_to_cart_collection);
+router.post('/buyer/get_data_from_add_to_cart_by_unique_id' , add_to_cart.find_unique_id_in_add_to_cart_collection);
 
 module.exports = router;
