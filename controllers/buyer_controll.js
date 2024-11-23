@@ -36,9 +36,9 @@ module.exports = {
     
     
     buyer_sign_in :async (req , res) =>{
-        const {buyer_email , buyer_password  } = req.body;
+        const {email , password  } = req.body;
     try {
-        const add_data_in_buyer_collection = await Users_import.buyer_collection.findOne({buyer_email ,buyer_password});
+        const add_data_in_buyer_collection = await Users_import.buyer_collection.findOne({email ,password});
 
         if(add_data_in_buyer_collection)
         {
