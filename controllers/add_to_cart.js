@@ -12,7 +12,7 @@ const { ObjectId } = require('mongodb');
 module.exports = {
 
     add_to_cart_data: async (req, res) => {
-        const { buyer_unique_id, product_name, seller_name, product_price, warranty, product_image } = req.body;
+        const {product_unique_id ,buyer_unique_id, product_name, seller_name, product_price, warranty, product_image } = req.body;
     
         console.log('--- Incoming Request Data ---');
         console.log('Buyer Unique ID:', buyer_unique_id);
@@ -29,6 +29,7 @@ module.exports = {
             const user = await Users_import.add_to_cart.create(
 
                 {
+                product_unique_id,
                 buyer_unique_id, 
                 product_name, 
                 seller_name, 
