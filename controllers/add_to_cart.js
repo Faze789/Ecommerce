@@ -56,7 +56,7 @@ module.exports = {
     find_unique_id_in_add_to_cart_collection : async ( req , res)=>
     {
         const {buyer_unique_id_} = req.body;
-
+        console.log(buyer_unique_id_);
         
         try {
             const find_unique_id_in_add_to_cart = await Users_import.add_to_cart.find({
