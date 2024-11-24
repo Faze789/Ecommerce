@@ -1,7 +1,8 @@
 const Users_import = require('../models/model.js')
 
 const path = require('path');
-const { ObjectId } = require('mongodb'); 
+const { ObjectId } = require('mongodb');
+const { ObjectId } = require('mongodb'); // Import ObjectId 
 // const jwt = require('jsonwebtoken');
 
 // const secret_key = 'fas';
@@ -74,6 +75,25 @@ module.exports = {
             
         }
     }
+    , 
+    
+delete_product_from_store: async (req, res) => {
+    const { product_unique_id } = req.body;
+
+    try {
+       
+        const result = await Users_import.seller_post.deleteOne({ _id: new ObjectId(product_unique_id) });
+
+        if (result.deletedCount === 1) {
+            res.status(200).json({ message: "Product deleted successfully." });
+        } else {
+            res.status(404).json({ message: "Product not found." });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "An error occurred while deleting the product.", error });
+    }
+}
     
 
 }
