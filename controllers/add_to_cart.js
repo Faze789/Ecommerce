@@ -65,7 +65,7 @@ module.exports = {
 
             if(find_unique_id_in_add_to_cart)
             {
-                res.status(200).json({find_unique_id_in_add_to_cart})
+                res.status(200).json(find_unique_id_in_add_to_cart)
             }
             else {
                 res.status(404).json({ message: "Unique ID couldnot be found in add_to_cart"});
