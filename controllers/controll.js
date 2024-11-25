@@ -163,7 +163,7 @@ module.exports = {
         check_all_posts_of_seller: async (req, res) => {
         const { seller_id_in_seller_collection } = req.body;
         console.log("got the seller idddddddd123456", seller_id_in_seller_collection);
-        console.log("got the seller name", seller_name);
+      
     
         try {
             
