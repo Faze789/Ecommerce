@@ -61,9 +61,9 @@ router.delete('/delete_data_from_store' ,add_to_cart.delete_product_from_store);
 /// chat_with_seller_and_buyer
 
 
-
-router.post('/check_chat_exists' , chat.check_chat_exists);
-router.post('/make_chat_db' , chat.make_chat_db);
+router.post('/chat_id_exists' , chat.check_id_exists);
+// router.post('/check_chat_exists' , chat.check_chat_exists);
+// router.post('/make_chat_db' , chat.make_chat_db);
 router.get('/hello' , chat.hello);
 // router.post('/find_chat_seller_and_buyer_using_their_unique_ids' , chat.find_same_unique_ids_both);
 
