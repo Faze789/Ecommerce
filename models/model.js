@@ -60,12 +60,20 @@ const add_to_cart_to_to_buyer = new mongoose.Schema(
   const add_to_cart = mongoose.model('add_to_cart_to_buyers', add_to_cart_to_to_buyer);
 
   const chat_seller_and_buyer = new mongoose.Schema(
-    {},
-    { strict: false }  // Allow dynamic fields
+    {
+      _id: { type: String, required: true },  // Chat ID
+      messages: [
+        {
+          message: { type: String, required: true },  // The content of the message
+          sent_by: { type: String, required: true }   // The sender's ID
+        }
+      ]
+    },
+    { strict: false }  // Allow flexible fields
   );
   
   // Create the model
-  const chat = mongoose.model('chat', chat_seller_and_buyer);
+  const chat = mongoose.model('chats', chat_seller_and_buyer);
 
 
 module.exports =  {seller_post ,User , buyer_collection , add_to_cart , chat};

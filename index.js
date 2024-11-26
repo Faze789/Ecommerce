@@ -16,8 +16,12 @@ app.use(express.json());
 app.use('/', router);
 
 const dbURI = 'mongodb+srv://khad1234:khad1234@cluster0.hekpe.mongodb.net/first';
-mongoose.connect(dbURI, { 
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log("Successfully connected to the database.");
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  })
+  .catch((err) => {
+    console.error("Error connecting to MongoDB:", err);
+  });
 
-})
-.then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`))) 
-.catch((err) => console.log(err));
