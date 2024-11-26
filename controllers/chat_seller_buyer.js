@@ -14,10 +14,10 @@ module.exports = {
       const chatId = `${sender_id}_${buyer_id}`;
 
     
-      const existingChat = await Users_import.chat_with_seller_and_buyer.findById(chatId);
+      const existingChat = await Users_import.chat.findById(chatId);
       if (!existingChat) {
     
-        const newChat = new Users_import.chat_with_seller_and_buyer.create({
+        const newChat = new Users_import.chat.create({
           _id: chatId,
           messages: [], 
         });
