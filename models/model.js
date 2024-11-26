@@ -57,14 +57,18 @@ const add_to_cart_to_to_buyer = new mongoose.Schema(
   );
 
 
-  const chat_with_seller_and_buyer = new mongoose.Schema(
+  const add_to_cart = mongoose.model('add_to_cart_to_buyers', add_to_cart_to_to_buyer);
+
+  const chat_seller_and_buyer = new mongoose.Schema(
     {
       
     },
     { strict: false } // This allows fields not defined in the schema
   );
 
-  const chat = mongoose.model('chat_seller_and_buyer ', chat_with_seller_and_buyer);
+  
+
+  const chat = mongoose.model('chat',chat_seller_and_buyer );
 
 
 module.exports =  {seller_post ,User , buyer_collection , add_to_cart , chat};
