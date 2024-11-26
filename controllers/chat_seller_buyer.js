@@ -4,6 +4,12 @@ const { ObjectId } = require('mongodb');
 
 // The `make_chat_db` function creates or checks for the existence of a chat. 
 module.exports = {
+
+make_chat_db: async (req, res) => {
+  console.log('hello');
+}
+
+  ,
   make_chat_db: async (req, res) => {
     const { sender_id, buyer_id, message } = req.body;
 
