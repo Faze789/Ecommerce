@@ -2,6 +2,8 @@ const express = require('express');
 const auth = require('../controllers/controll');
 const buyer_auth = require('../controllers/buyer_controll');
 const add_to_cart = require('../controllers/add_to_cart');
+const chat = require('../controllers/chat_seller_buyer');
+
 
 
 const router = express.Router();
@@ -54,5 +56,12 @@ router.post('/buyer/add_to_cart' ,add_to_cart.add_to_cart_data);
 router.post('/buyer/get_data_from_add_to_cart_by_unique_id' , add_to_cart.find_unique_id_in_add_to_cart_collection);
 router.delete('/delete_data_from_store' ,add_to_cart.delete_product_from_store);
 
+
+
+/// chat_with_seller_and_buyer
+
+
+router.post('/make_chat_db' , chat.make_chat_db);
+router.post('/find_chat_seller_and_buyer_using_their_unique_ids' , chat.find_same_unique_ids_both);
 
 module.exports = router;
