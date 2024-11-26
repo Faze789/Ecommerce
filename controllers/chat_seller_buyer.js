@@ -9,20 +9,20 @@ module.exports = {
     const { sender_id, buyer_id, message } = req.body;
 
     try {
+      console.log(sender_id);
+      console.log(buyer_id);
       const chatId = `${sender_id}_${buyer_id}`;
 
-      // Use `findOne` instead of `findById` to search by the custom `chatId`
-      const existingChat = await Users_import.chat.findOne({ _id: chatId });
+      
 
-      // If the chat does not exist, create a new one
-      if (!existingChat) {
+ 
         const newChat = new Users_import.chat({
           _id: chatId,       // Custom chat ID
           messages: [message], // Initialize with the first message
         });
 
         await newChat.save(); // Save the new chat to the database
-      }
+      
 
       // Send a success response if chat is created or exists
       res.status(200).send({ success: true, message: "Chat created or exists." });
