@@ -7,7 +7,7 @@ const { ObjectId } = require('mongodb');
 module.exports = {
 
   make_chat_db: async (req, res) => {
-    const { sender_id, buyer_id } = req.body;
+    const { sender_id, buyer_id , message } = req.body;
 
     try {
    
