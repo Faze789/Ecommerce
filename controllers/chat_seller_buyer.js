@@ -11,7 +11,7 @@ module.exports = {
       console.log(sender_id, buyer_id, message);
       const chatId = `${sender_id}_${buyer_id}`;
 
-      const newChat = new Users_import.chat({
+      const newChat = new Users_import.chat.create({
         _id: chatId,
         messages: [message],
       });
