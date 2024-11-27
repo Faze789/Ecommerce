@@ -51,7 +51,7 @@ router.get('/buyer_home' , buyer_auth.buyer_home);
 
 router.get('/home/buyer/get_all_sellers_data' , buyer_auth.get_all_sellers_data),
 router.post('/home/buyer/buyer_sign_in' , buyer_auth.buyer_sign_in);
-router.post('get_unique_id_for_buyer' , buyer_auth.buyer__get_unique_id);
+router.post('/home/buyer/buyer_get_unique_id' , buyer_auth.buyer__get_unique_id);
 
 
 router.post('/home/buyer/add_new_buyer' , buyer_auth.add_user_in_buyer_collection);
