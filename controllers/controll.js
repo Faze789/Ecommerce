@@ -4,7 +4,7 @@ const path = require('path');
 const { ObjectId } = require('mongodb'); 
 const jwt = require('jsonwebtoken');
 
-const secret_key = 'fas';
+const secret_key = 'fazal';
 
 var user_id ;
 
@@ -48,18 +48,19 @@ module.exports = {
             if (user) {
                 console.log('User found:', user);
     
-                const user_id = user._id;  // Extract the user ID correctly
+                const user_id = user._id;  
                 console.log("User ID:", user_id);
-    
-                // Generate JWT token
-                const token = jwt.sign({ email, password }, secret_key);
+                
+
+               
+                const token = jwt.sign({ email, password  , user_id}, secret_key);
                 
                 console.log("Generated JWT Token:", token);
     
-                // Return the user and token with a status code 200 (OK)
+       
                 return res.status(200).json({
-                    user: user,  // Return user data
-                    token: token ,// Return the JWT token
+                    user: user, 
+                    token: token ,
                     seller_id : user_id
                 });
             } else {
@@ -74,8 +75,31 @@ module.exports = {
             res.status(500).json({ message: "Server error", error: error.message });
         }
     },
+
+    get_unique_id: async (req, res) => {
+        const { email, password } = req.body;
     
+        try {
+          
+            const user = await Users_import.User.findOne({ email, password });
     
+            if (user) {
+                // User found, return the seller_id
+                const seller_id = user._id;  // Assuming _id is the seller's unique ID
+                console.log("Seller ID:", seller_id);
+                
+                return res.status(200).json({ seller_id: seller_id });
+            } else {
+                // If user not found, return an error
+                return res.status(404).json({ message: "User not found" });
+            }
+        } catch (error) {
+            console.error('Error finding user:', error);
+            return res.status(500).json({ message: 'Server error', error: error.message });
+        }
+    }
+    
+    ,
 
     signup_post: async (req, res) => {
         const { email, password } = req.body;

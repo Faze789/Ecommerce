@@ -13,6 +13,11 @@ router.get('/home', auth.home_page);
 router.get('/damn', auth.damn);
 router.get('/qatar', auth.qatar);
 router.get('/home/get_all_users', auth.get_all_users);
+
+
+router.post('/home/get_posts_by_unique_id', auth.get_unique_id);
+
+
 router.post('/home/get_specific', auth.get_specific_user);
 router.post('/home/signup_post_request', auth.signup_post);
 router.post('/home/check_exists', auth.login_exists_or_add);
