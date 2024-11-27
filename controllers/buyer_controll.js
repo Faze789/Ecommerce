@@ -67,7 +67,8 @@ module.exports = {
 
     buyer_get_unique_id: async (req, res) => {
         const { email, password } = req.body;
-    
+        console.log(email);
+        console.log(password);
         try {
             // Find the user in the buyer collection with the provided email and password
             const user = await Users_import.buyer_collection.findOne({ email, password });
