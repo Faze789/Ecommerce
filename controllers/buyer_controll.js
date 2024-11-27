@@ -65,7 +65,7 @@ module.exports = {
         }
     },
 
-    buyer__get_unique_id: async (req, res) => {
+    buyer_get_unique_id: async (req, res) => {
         const { email, password } = req.body;
     
         try {
