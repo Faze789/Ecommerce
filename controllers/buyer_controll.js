@@ -37,33 +37,41 @@ module.exports = {
     
     buyer_sign_in: async (req, res) => {
         const { email, password } = req.body;
-
+    
         try {
-            // Find the user in the buyer collection with the provided email and password
+            // Find the buyer user in the collection with the provided email and password
             const user = await Users_import.buyer_collection.findOne({ email, password });
-
+    
             if (user) {
-                // User found, generate a JWT token
-                const payload = { email: user.email, user_id: user._id }; // Payload for the token
-
-                // Generate a JWT token with a secret key and expiration time (e.g., 1 hour)
-                const token = jwt.sign(payload, secret_key, { expiresIn: '1h' });
-
-                // Return the user data and the JWT token
+                console.log('User found:', user);
+    
+                const user_id = user._id;  
+                console.log("User ID:", user_id);
+    
+                // Generate the JWT token with the email, password, and user ID
+                const token = jwt.sign({ email, password, user_id }, secret_key);
+    
+                console.log("Generated JWT Token:", token);
+    
+                // Return the user data and the JWT token along with seller_id (which is actually user_id in this case)
                 return res.status(200).json({
                     message: 'Login successful',
-                    user: user, // User data
-                    token: token, // JWT token
+                    user: user,  // User data
+                    token: token,  // JWT token
+                    seller_id: user_id  // Passing user_id as seller_id
                 });
             } else {
-                // If user not found, return an error message
-                return res.status(400).json({ message: 'Login credentials of buyer do not exist' });
+                console.log('User not found');
+                // Return an error message if user is not found
+                return res.status(404).json({ message: 'Login credentials of buyer do not exist' });
             }
         } catch (error) {
             console.error('Error in buyer sign-in:', error);
-            return res.status(500).json({ message: 'Server error' });
+            // Handle server error
+            return res.status(500).json({ message: 'Server error', error: error.message });
         }
     },
+    
 
     buyer_get_unique_id: async (req, res) => {
         const { email, password } = req.body;
