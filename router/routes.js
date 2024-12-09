@@ -28,7 +28,6 @@ router.get('/home/check_exists/ad_post', auth.get_seller_ads);
 
 
 
-
 router.post('/home/check_exists/new/seller_post', auth.login_exists_or_add);
 
 router.post('/home/check_exists/new/seller_post/new_post', auth.add_new_post_in_seller_collection);
